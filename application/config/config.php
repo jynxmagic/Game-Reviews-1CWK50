@@ -23,7 +23,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/games-review';
+
+
+$base_url = "http://gamereview.dev/";
+
+//this way of defining the base URL makes it dynamic (depending on the request) and easier to use across multiple environments. If the user managed to successfully connect to the web server, we'll use whatever URL they're connecting with.
+if (isset($_SERVER['SERVER_ADDR']))
+{
+	$config['base_url'] = "http://{$_SERVER['SERVER_ADDR']}/";
+}
+else if(isset($_REQUEST['HOST']))
+{
+	$config['base_url'] = "http://{$_REQUEST['HOST']}/";
+}
+else
+{
+	$config['base_url'] = $base_url;
+}
 
 /*
 |--------------------------------------------------------------------------

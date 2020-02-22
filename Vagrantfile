@@ -16,14 +16,13 @@ Vagrant.configure("2") do |config|
     hyperv.memory = 1024
     hyperv.maxmemory = 2048
     hyperv.linked_clone = true #speeds up the initial install
-    hyperv.enable_virtualization_extensions = true #more is better
-    hyperv.cpus = 2
+    hyperv.cpus = 4
   end
 
   ## this is the install script ran when the machine is first created, or provisioned. install everything we need + extras (i will probably reuse this script) ##
   CONFIGSCRIPT = <<-CONFIGSCRIPT
 
-  sudo killall apt apt-get #if someone restarted the script we need to kill anything they just tried to do
+  sudo killall apt apt-get #if someone :qrestarted the script we need to kill anything they just tried to do
 
   echo "Replacing ubuntu default mirror with uk mirror..."
   sudo sed -i "s/archive.ubuntu.com/uk.archive.ubuntu.com/" /etc/apt/sources.list ##See https://github.com/Microsoft/WSL/issues/2477
@@ -77,6 +76,7 @@ Vagrant.configure("2") do |config|
   sudo ufw allow 8080
   sudo ufw allow ssh
   sudo ufw allow ftp
+  sudo ufw enable
   sudo ufw reload
   echo ""
   echo "Done!"

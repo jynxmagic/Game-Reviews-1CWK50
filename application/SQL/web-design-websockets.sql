@@ -1,14 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.8.0.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Jun 12, 2019 at 02:19 PM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 7.2.5
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,6 +10,11 @@ SET time_zone = "+00:00";
 --
 -- Database: `gamereview`
 --
+
+CREATE DATABASE IF NOT EXISTS
+    gamereview;
+
+USE gamereview;
 
 -- --------------------------------------------------------
 

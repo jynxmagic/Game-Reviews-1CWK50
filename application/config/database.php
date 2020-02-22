@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'hostname' => '127.0.0.1',
+	'username' => 'newuser',
+	'password' => 'password',
+	'database' => 'gamereview',
 	'dbdriver' => '',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
