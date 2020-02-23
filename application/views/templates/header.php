@@ -11,7 +11,7 @@
 </head>
 <body class="bg-dark">
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top border-bottom">
 
 			<a href="<?php echo base_url() ?>"><p class="text-white font-weight-bolder pl-1 mt-3">Game Reviews</p> </a>
 
@@ -31,4 +31,5 @@
 				?>
 			</ul>
 		</nav>
+		<div class="pt-5">test</div>
 	</header>
