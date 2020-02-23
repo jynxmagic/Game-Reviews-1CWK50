@@ -45,7 +45,7 @@ class Home extends CI_Controller{
         $data['result'] = $this->HomeModel->getGame();
         
         //Load the view and send the data accross.
-        $this->load->view('home', $data);
+        $this->load->view('pages/home', $data);
     }
 
     public function review($slug = NULL)

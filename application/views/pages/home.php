@@ -1,6 +1,6 @@
 <div class="">
 	<div class="">
-		<div id="carouselHome" class="carousel">
+		<div id="carouselHome" class="carousel slide" data-ride="carousel">
 			<!-- Carousel Indicators -->
 			<ol class="carousel-indicators">
 				<?php
@@ -25,9 +25,7 @@
 
 					echo <<<EOT
 				<div class="$class img-fluid">
-					<div class="position-relative img-fade">
-						<img src="$url" alt="row->imgName" height="500px" width="100%">
-					</div>
+					<img src="$url" alt="row->imgName" height="500px" width="100%">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>$row->GameName</h5>
 						<p>$row->GameReview</p>
