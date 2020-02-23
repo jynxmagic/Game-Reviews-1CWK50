@@ -23,7 +23,8 @@ class User extends CI_Controller
 	 */
 	public function login()
 	{
-		$this->load->view("pages/login");
+		$data['title'] = "Game Review - Login";
+		$this->load->view("pages/login", $data);
 	}
 
 	/**
@@ -31,7 +32,54 @@ class User extends CI_Controller
 	 */
 	public function register()
 	{
-		$this->load->view("pages/register");
+		$data['title'] = "Game Review - register";
+		$this->load->view("pages/register", $data);
+	}
+
+	/**
+	 * Log user out and redirect to referrer
+	 */
+	public function logout()
+	{
+		$this->load->library('session');
+		$this->load->library('user_agent');
+
+		//unset session data
+		if(isset($this->session->userdata['is_logged_in']))
+		{
+			$this->session->unset_userdata('username');
+			$this->session->unset_userdata('is_logged_in');
+		}
+
+
+		//redirect to whence you came
+		redirect($this->agent->referrer());
+	}
+
+	/**
+	 * Loads Account of username and shows page
+	 *
+	 * @param $username
+	 */
+	public function view($username)
+	{
+		$username = xss_clean($username);
+		$data['title'] = "Game Reviews - Account $username";
+
+
+		$user = $this->getUserByUsername($username);
+
+		if($user !== FALSE)
+		{
+			$data['user'] = $user;
+			$this->load->view('pages/account', $data);
+		}
+		else
+		{
+			$data['heading'] = "404 - Could not find user";
+			$data['message'] = "$username does not exist >:(";
+			$this->load->view('errors/html/error_404', $data);
+		}
 	}
 
 	/**
@@ -196,25 +244,5 @@ class User extends CI_Controller
 			return true;
 		}
 		return false;
-	}
-
-	/**
-	 * Log user out and redirect to referrer
-	 */
-	public function logout()
-	{
-		$this->load->library('session');
-		$this->load->library('user_agent');
-
-		//unset session data
-		if(isset($this->session->userdata['is_logged_in']))
-		{
-			$this->session->unset_userdata('username');
-			$this->session->unset_userdata('is_logged_in');
-		}
-
-
-		//redirect to whence you came
-		redirect($this->agent->referrer());
 	}
 }

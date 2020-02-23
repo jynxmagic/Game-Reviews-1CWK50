@@ -63,9 +63,10 @@ $route['login'] = 'User/login';
 $route['login/do-login'] = 'User/do_login';
 $route['register'] = 'User/register';
 $route['register/do-register'] = 'User/do_register';
+$route['account/(:any)'] = 'User/view/$1';
 $route['logout'] = 'User/logout';
 #$route['User/getUserDetails'] = 'User/GetUserDetails';
-$route['account'] = 'Account';
+
 
 
 //COMMENTS CONTROLLER
