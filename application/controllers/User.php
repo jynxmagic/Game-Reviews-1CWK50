@@ -175,6 +175,14 @@ class User extends CI_Controller
 
 	public function logout()
 	{
+		$this->load->library('session');
+		$this->load->library('user_agent');
 
+		//unset session data
+		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('is_logged_in');
+
+		//redirect to whence you came
+		redirect($this->agent->referrer());
 	}
 }
