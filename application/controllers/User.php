@@ -24,6 +24,13 @@ class User extends CI_Controller
 	public function login()
 	{
 		$data['title'] = "Game Review - Login";
+
+		if(isset($this->session->userdata['is_logged_in']))
+		{
+			$data['is_logged_in'] = $this->session->userdata['is_logged_in'];
+			$data['username'] = $this->session->userdata['username'];
+		}
+
 		$this->load->view("pages/login", $data);
 	}
 
@@ -33,6 +40,11 @@ class User extends CI_Controller
 	public function register()
 	{
 		$data['title'] = "Game Review - register";
+		if(isset($this->session->userdata['is_logged_in']))
+		{
+			$data['is_logged_in'] = $this->session->userdata['is_logged_in'];
+			$data['username'] = $this->session->userdata['username'];
+		}
 		$this->load->view("pages/register", $data);
 	}
 
@@ -65,6 +77,11 @@ class User extends CI_Controller
 	{
 		$username = xss_clean($username);
 		$data['title'] = "Game Reviews - Account $username";
+		if(isset($this->session->userdata['is_logged_in']))
+		{
+			$data['is_logged_in'] = $this->session->userdata['is_logged_in'];
+			$data['username'] = $this->session->userdata['username'];
+		}
 
 
 		$user = $this->getUserByUsername($username);

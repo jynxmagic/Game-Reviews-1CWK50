@@ -29,6 +29,7 @@ class Home extends CI_Controller{
         $data['title']       = 'Games Reviews - Homepage';
         $data['css_link'] = "<link rel='stylesheet' href='".base_url('libs/css/home.css')."'>";
 		$data['result'] = $this->HomeModel->getGame();
+
 		if(isset($this->session->userdata['is_logged_in']))
 		{
 			$data['is_logged_in'] = $this->session->userdata['is_logged_in'];
