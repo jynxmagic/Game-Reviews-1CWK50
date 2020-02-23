@@ -35,21 +35,42 @@ class User extends CI_Controller
 	}
 
 	/**
-	 * Called to perform the register action
+	 * Perform the register action
 	 */
 	public function do_register()
 	{
-		//TODO validation etc
+		$isValid = $this->isValidPostData();
 
-		$data = array(
-			'username' => xss_clean($this->input->post('username')),
-			'password' => xss_clean($this->input->post('password'))
-		);
+		if($isValid)
+		{
+			#get post data
+			$data = array(
+				'username' => xss_clean($this->input->post('username')),
+				'password' => xss_clean($this->input->post('password'))
+			);
 
-		$this->UserModel->createUser($data);
+			#create user
+			$this->UserModel->createUser($data);
 
-		//go home
-		redirect('/');
+			#log user in
+			$this->session->set_userdata(array(
+				'is_logged_in' => true,
+				'username' => $data['username']
+			));
+
+			#go home
+			redirect('/');
+
+		}
+		else
+		{
+			# errorful data. let user know and show validation error (helper on view file)
+			$data['error'] = "Couldn't register";
+
+			$this->load->view('pages/register', $data);
+		}
+
+
 	}
 
 	/***
@@ -63,7 +84,7 @@ class User extends CI_Controller
 		##VALIDATION
 		# user_guide/libraries/form_validation.html
 
-		$validInput = $this->validateLoginInput();
+		$validInput = $this->isValidPostData();
 
 		if (!$validInput)
 		{
@@ -111,8 +132,12 @@ class User extends CI_Controller
 	}
 
 
-
-	private function validateLoginInput()
+	/**
+	 * Validates post data
+	 *
+	 * @return bool true if post data valid
+	 */
+	private function isValidPostData()
 	{
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[16]',
 			array(
@@ -173,14 +198,21 @@ class User extends CI_Controller
 		return false;
 	}
 
+	/**
+	 * Log user out and redirect to referrer
+	 */
 	public function logout()
 	{
 		$this->load->library('session');
 		$this->load->library('user_agent');
 
 		//unset session data
-		$this->session->unset_userdata('username');
-		$this->session->unset_userdata('is_logged_in');
+		if(isset($this->session->userdata['is_logged_in']))
+		{
+			$this->session->unset_userdata('username');
+			$this->session->unset_userdata('is_logged_in');
+		}
+
 
 		//redirect to whence you came
 		redirect($this->agent->referrer());

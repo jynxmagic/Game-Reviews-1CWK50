@@ -28,6 +28,13 @@ class Home extends CI_Controller{
         // Change this to whatever title you wish.
         $data['title']       = 'Games Reviews - Homepage';
         $data['css_link'] = "<link rel='stylesheet' href='".base_url('libs/css/home.css')."'>";
+		$data['result'] = $this->HomeModel->getGame();
+		if(isset($this->session->userdata['is_logged_in']))
+		{
+			$data['is_logged_in'] = $this->session->userdata['is_logged_in'];
+			$data['username'] = $this->session->userdata['username'];
+		}
+
 
         // Condition checking if the user exists.
         if (!$userExists)
@@ -41,11 +48,8 @@ class Home extends CI_Controller{
 
         
         // Get the data from our Home Model.
-        $data['result'] = $this->HomeModel->getGame();
 
-		$data['is_logged_in'] = $this->session->userdata['is_logged_in'];
-		$data['username'] = $this->session->userdata['username'];
-        
+
         //Load the view and send the data accross.
         $this->load->view('pages/home', $data);
     }

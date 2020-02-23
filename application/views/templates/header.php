@@ -15,9 +15,9 @@
 			<?php if(isset($is_logged_in) && $is_logged_in == 1 && isset($username)) echo "Hi, $username. Nice to see you." ?>
 
 			<ul class="nav float-right pl-4">
-				<li class="nav-item pr-4"><a href="<?  echo base_url('/login') ?>">Login</a></li>
-				<li class="nav-item pr-4"><a href="<?  echo base_url('/logout') ?>">Logout</a></li>
-				<li class="nav-item pr-4"><a href="<?  echo base_url('/register') ?>">Register</a></li>
+				<li class="nav-item pr-4"><a href="<?php  echo base_url('/login') ?>">Login</a></li>
+				<li class="nav-item pr-4"><a href="<?php  echo base_url('/logout') ?>">Logout</a></li>
+				<li class="nav-item pr-4"><a href="<?php  echo base_url('/register') ?>">Register</a></li>
 			</ul>
 		</nav>
 	</header>
