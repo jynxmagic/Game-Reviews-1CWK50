@@ -9,8 +9,6 @@
  */
 class UserModel extends CI_Model
 {
-	public $username;
-	public $password;
 
 	public function __construct()
 	{

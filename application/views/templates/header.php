@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('libs/css/bootstrap.min.css')?>">
 	<?php if(isset($css_link)) echo $css_link ?>
 </head>
-<body>
+<body class="bg-dark">
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
@@ -22,6 +22,7 @@
 				<li class="nav-item pr-4"><a href="<?php  echo base_url('/login') ?>">Login</a></li>
 				<li class="nav-item pr-4"><a href="<?php  echo base_url('/logout') ?>">Logout</a></li>
 				<li class="nav-item pr-4"><a href="<?php  echo base_url('/register') ?>">Register</a></li>
+				<li class="nav-item pr-4"><a href="<?php  echo base_url('/reviews') ?>">Latest Reviews</a></li>
 				<?php
 				if(isset($is_logged_in) && isset($username)) {
 					$href = base_url('account/'.$username);
