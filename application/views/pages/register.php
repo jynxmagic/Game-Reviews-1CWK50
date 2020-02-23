@@ -1,5 +1,5 @@
-<?php echo validation_errors(); ?>
-
+<?php
+echo validation_errors(); ?>
 
 <?php
 $username_input_config = array (
@@ -19,10 +19,10 @@ $password_input_config= array (
 ?>
 
 <section>
-	<h1>Login page</h1>
+	<h1>Register page</h1>
 	<?php if(isset($error)) echo $error ?>
 
-	<?php echo form_open('login/do-login'); ?>
+	<?php echo form_open('register/do-register'); ?>
 	<?php echo form_fieldset('User Information'); ?>
 	<?php echo form_label('Username:', 'username'); ?>
 	<?php echo form_input($username_input_config ); ?>

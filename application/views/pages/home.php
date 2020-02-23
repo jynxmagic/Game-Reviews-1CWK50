@@ -64,8 +64,8 @@ EOT;
 
 </script>
 
-<!-- This section needs editing to create the chat system using HTML -->
+<!-- TODO This section needs editing to create the chat system using HTML
 <button id="chatButton" class="open-button btn btn-success" onclick="openForm()">Chat</button>
 <div class="chat-popup pull-right" id="myForm">
 <form id="myform" class="form-container">
-</form>
+</form> -->

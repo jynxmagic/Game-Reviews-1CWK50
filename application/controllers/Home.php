@@ -7,7 +7,6 @@ class Home extends CI_Controller{
     {
         parent::__construct();
         // Consider if it would be best to autoload some of the helpers from here.
-        $this->load->helper('url');
         $this->load->helper('url_helper');
         $this->load->helper('html');
         $this->load->helper('cookie');
@@ -56,7 +55,7 @@ class Home extends CI_Controller{
         
     }
 
-    //TODO: Create all other functions as required for further functionality (Comments, Login and so on.)
+    //TODO: Create all other functions as required for further functionality (Comments, User and so on.)
     // Note: You can redirect to a page by using the redirect function as follows:
     /*
         //Redirect Home
