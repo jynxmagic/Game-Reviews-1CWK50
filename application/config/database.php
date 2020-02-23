@@ -79,7 +79,7 @@ $db['default'] = array(
 	'username' => 'newuser',
 	'password' => 'password',
 	'database' => 'gamereview',
-	'dbdriver' => '',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

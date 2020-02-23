@@ -27,7 +27,8 @@ class Home extends CI_Controller{
 
 
         // Change this to whatever title you wish.
-        $data['title']       = 'Games Reviews';
+        $data['title']       = 'Games Reviews - Homepage';
+        $data['css_link'] = "<link rel='stylesheet' href='".base_url('libs/css/home.css')."'>";
 
         // Condition checking if the user exists.
         if (!$userExists)

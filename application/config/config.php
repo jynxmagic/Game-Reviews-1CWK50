@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 
-$base_url = "http://gamereview.dev/";
+$base_url = "http://gamereview.dev/"; # these URLs are now problematic. Google Chrome forces .dev domains to https. see: https://ma.ttias.be/chrome-force-dev-domains-https-via-preloaded-hsts/
 
 //this way of defining the base URL makes it dynamic (depending on the request) and easier to use across multiple environments. If the user managed to successfully connect to the web server, we'll use whatever URL they're connecting with.
 if (isset($_SERVER['SERVER_ADDR']))

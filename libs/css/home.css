@@ -1,0 +1,22 @@
+.img-fade::after
+{
+	position: absolute;
+	top:0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	content: '';
+	display: block;
+	background-image: linear-gradient(to right, transparent 85%, black 100%);
+}
+.img-fade::before
+{
+	position: absolute;
+	top:0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	content: '';
+	display: block;
+	background-image: linear-gradient(to left, transparent 85%, black 100%);
+}
