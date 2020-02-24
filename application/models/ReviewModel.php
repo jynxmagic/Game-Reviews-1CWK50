@@ -31,8 +31,8 @@ class ReviewModel extends CI_Model
 
 	public function getReviewWithId($id)
 	{
-		$query = $this->db->get('activereviews', array('ID' => $id));
-
-		return $query->first_row();
+		$query = $this->db->get_where('activereviews', array('ID' => $id));
+		$result = $query->first_row();
+		return $result;
 	}
 }

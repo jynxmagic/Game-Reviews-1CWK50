@@ -57,13 +57,21 @@ class Review extends CI_Controller
 			$data['username'] = $this->session->userdata['username'];
 		}
 
-		//this is a very quick way of checking for injection via uri with number based urls
+		//this is a very quick way of checking for injection via uri with number based urls - imo
 		if(is_numeric($id))
 		{
+
 			$review = $this->ReviewModel->getReviewWithId($id);
 			if(isset($review->ID))
 			{
 				$data['review'] = $review;
+
+				//only add the vue script if the page has comments enabled
+				if(isset($review->GameComments_YN) && $review->GameComments_YN == "Y")
+				{
+					$data['additional_scripts'] = array(base_url('application/scripts/vue/review_vue.js'));
+				}
+
 				$this->load->view('pages/review', $data);
 			}
 			else

@@ -28,7 +28,7 @@
 
 <script src="<?php echo base_url('application/scripts/jquery.min.js') ?>" defer></script>
 <script src="<?php echo base_url('application/scripts/bootstrap.min.js') ?>" defer></script>
-<script src="<?php echo base_url('application/scripts/vue.js') ?>" defer></script>
+<script src="<?php echo base_url('application/scripts/vue/vue.js') ?>" defer></script>
 <script src="<?php echo base_url('application/scripts/popper.min.js') ?>" defer></script>
 
 <!-- additional scripts for this page -->
