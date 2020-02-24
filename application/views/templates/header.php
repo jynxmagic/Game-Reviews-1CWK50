@@ -6,10 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title><?php echo $title?></title>
 
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('libs/css/bootstrap.min.css')?>">
-	<?php if(isset($css_link)) echo $css_link ?>
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('application/css/bootstrap.min.css')?>">
 </head>
-<body class="bg-dark text-white">
+<body class="bg-dark text-white min-vh-100">
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
 
