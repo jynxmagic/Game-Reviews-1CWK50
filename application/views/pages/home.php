@@ -46,29 +46,13 @@ EOT;
 	</a>
 </div>
 
-
-<script defer>
-
-	//ES5 onload https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
-
-	options = {
-	    interval : 2000,
-		ride: "cycle"
-	};
-	const loadCarousel = () => {
-	    $('.carousel').carousel(options);
-	};
-	window.onload = loadCarousel;
-
-</script>
-
 <div class="container-fluid mt-4">
 	<div class="row">
 		<section class="col-12 text-white text-center">
 			<h1 class="display-1">Game Reviews</h1>
 			<p class="pt-2">What else is there to say?</p>
 			<p class="pt-2">OH YEAH!</p>
-			<h2 class="pt-2 display-2">GAME REVIEWS!</h2>
+			<h2 class="pt-2 display-2">INSTANT MESSAGING!</h2>
 			<small class="small pt-6">here's a footer: </small>
 		</section>
 	</div>

@@ -1,13 +1,14 @@
-<?php echo doctype() ?>
+<?php echo doctype() ?><?php echo PHP_EOL; ?>
 <html lang="en">
 <head>
-	<!-- Required meta tags -->
+	<!-- meta tags -->
 	<?php echo meta('Content-type', 'text/html; charset=utf-8', 'equiv'); ?>
 	<?php echo meta('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no'); ?>
-	<?php if(isset($title)) echo meta('title', $title); ?>
+	<?php if(isset($title)) echo meta('title', $title)."\n<title>$title</title>"; ?>
 	<?php if(isset($description)) echo meta('description', $description) ?>
 
 
+	<!-- link tags -->
 	<?php echo link_tag('application/css/bootstrap.min.css'); ?>
 	<?php echo link_tag('application/images/favicon.png', 'shortcut icon', 'image/ico'); ?>
 

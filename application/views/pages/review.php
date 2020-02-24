@@ -7,4 +7,6 @@
 
 Game Comments placeholder
 
+
+<?php link ?>
 <?php endif; ?>

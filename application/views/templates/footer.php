@@ -30,5 +30,14 @@
 <script src="<?php echo base_url('application/scripts/bootstrap.min.js') ?>" defer></script>
 <script src="<?php echo base_url('application/scripts/vue.js') ?>" defer></script>
 <script src="<?php echo base_url('application/scripts/popper.min.js') ?>" defer></script>
+
+<!-- additional scripts for this page -->
+<?php if(isset($additional_scripts))
+{
+	foreach ($additional_scripts as $script)
+	{
+		echo "<script src='$script' defer></script>";
+	}
+}?>
 </body>
 </html>
