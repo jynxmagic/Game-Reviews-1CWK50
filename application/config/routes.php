@@ -55,7 +55,7 @@ $route['index'] = 'Home/index';
 
 //REVIEW CONTROLLER
 $route['reviews'] = 'Review';
-$route['review/(:any)'] = 'home/review/$1';
+$route['review/(:any)'] = 'Review/review/$1';
 
 
 // USER CONTROLLER

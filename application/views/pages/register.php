@@ -7,14 +7,16 @@ $username_input_config = array (
 	'id'            => 'username',
 	'value'         => set_value('username'),
 	'maxlength'     => '16',
-	'required'		=> true
+	'required'		=> true,
+	'placeholder'	=> 'Username'
 );
 $password_input_config= array (
 	'name'          => 'password',
 	'id'            => 'password',
 	'value'         => set_value('password'),
 	'maxlength'     => '16',
-	'required'		=> true
+	'required'		=> true,
+	'placeholder'	=> 'Password'
 );
 ?>
 

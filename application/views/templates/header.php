@@ -9,9 +9,9 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('libs/css/bootstrap.min.css')?>">
 	<?php if(isset($css_link)) echo $css_link ?>
 </head>
-<body class="bg-dark">
+<body class="bg-dark text-white">
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top border-bottom">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
 
 			<a href="<?php echo base_url() ?>"><p class="text-white font-weight-bolder pl-1 mt-3">Game Reviews</p> </a>
 
@@ -31,5 +31,4 @@
 				?>
 			</ul>
 		</nav>
-		<div class="pt-5">test</div>
 	</header>
