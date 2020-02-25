@@ -21,8 +21,9 @@
 		</div>
 		<div v-else>
 			<div v-for="comment in Comments">
-				<div class="row">
-					{{comment.UserID}} {{comment.UserComment}}
+				<div class="row justify-content-center bg-light border-dark text-dark mt-3">
+					ID: {{comment.UserID}}<br>
+					{{comment.UserComment}}<br>
 				</div>
 			</div>
 		</div>

@@ -70,6 +70,7 @@ $route['logout'] = 'User/logout';
 
 
 //COMMENTS CONTROLLER
+$route['review/comments/(:any)'] = 'Comments/getCommentsForReview/$1';
 $route['response'] = 'Home/Comments';
 $route['response-user'] = 'Home/UserName';
 $route['404_override'] = '';
