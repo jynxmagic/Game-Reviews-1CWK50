@@ -15,6 +15,10 @@
 
 	<?php if($review->GameComments_YN == "Y"): ?>
 	<div id="app" class="mt-5 border-top border-light pt-3">
+
+		<!-- post new comment -->
+		<input type="textarea" id="commentInput" />
+		<button v-on:click="postNewComment()" class="btn-lg btn-success">Submit</button>
 		 <!-- Check if there are more than 0 comments, if so display them. If not, display a message explaining there are no comments. -->
 		<div v-if="Comments.length == 0">
 			<p>No Comments have been added to this review yet.</p>

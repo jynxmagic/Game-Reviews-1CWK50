@@ -71,7 +71,10 @@ $route['logout'] = 'User/logout';
 
 //COMMENTS CONTROLLER
 $route['review/comments/(:any)'] = 'Comments/getCommentsForReview/$1';
-$route['response'] = 'Home/Comments';
+$route['review/comments/(:any)/postComment'] = 'Comments/postCommentToReview/$1';
+
+
+
 $route['response-user'] = 'Home/UserName';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

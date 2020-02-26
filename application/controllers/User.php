@@ -233,7 +233,7 @@ class User extends CI_Controller
 	 * @param $username to search
 	 * @return bool user if found, or false
 	 */
-	private function getUserByUsername($username)
+	public function getUserByUsername($username)
 	{
 		$user = $this->UserModel->getUserByUsername($username);
 

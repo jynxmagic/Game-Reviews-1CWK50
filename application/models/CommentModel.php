@@ -14,4 +14,16 @@ class CommentModel extends CI_Model
 		$result = $query->result();
 		return $result;
 	}
+
+	public function insertCommentToReview($comment, $reviewid, $userid)
+	{
+
+		$insert_data = array(
+			'UserID' => $userid,
+			'ReviewID' => $reviewid,
+			'UserComment' => $comment
+		);
+
+		$this->db->insert('gamescomments', $insert_data);
+	}
 }

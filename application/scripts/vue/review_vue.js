@@ -25,13 +25,17 @@ var app = new Vue({
 			});
 		},
 
-		postNewComment: function (message, userID)
+		postNewComment: function ()
 		{
 			let reviewID = window.location.href.split('/').pop();
+			let comment = $('#commentInput').val();
 
+			$.post('/review/comments/'+reviewID+'/postComment', {comment: comment}, function(){
 
-			getComments(reviewID);
+			});
+
+			//reload comment data
+			this.getComments(reviewID);
 		}
-		//    Add your methods here.
 	}
 });
