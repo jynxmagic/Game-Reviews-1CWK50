@@ -1,3 +1,20 @@
+<div id="chat" class="container">
+	<div v-if="code == 200">
+		<!-- chat server is online! -->
+		Chat online
+
+		<div id="chatbox" class="row">
+
+		</div>
+
+		<input id="message" type="text" class="row"/>
+		<button v-on:click="sendMessage()" class="btn row bg-white btn-hover" id="chatsubmit">Send Message</button>
+	</div>
+	<div v-else>
+		Chat offline
+	</div>
+</div>
+
 <footer class="footer mt-5 pt-2 rounded-top page-footer py-3" style="background-color: black">
 	<div class="container-fluid">
 		<div class="row pb-3">
@@ -29,7 +46,9 @@
 <script src="<?php echo base_url('application/scripts/jquery.min.js') ?>" defer></script>
 <script src="<?php echo base_url('application/scripts/bootstrap.min.js') ?>" defer></script>
 <script src="<?php echo base_url('application/scripts/vue/vue.js') ?>" defer></script>
+<script src="<?php echo base_url('application/scripts/vue/chat.js')?>" defer></script>
 <script src="<?php echo base_url('application/scripts/popper.min.js') ?>" defer></script>
+<script src="<?php echo base_url('application/scripts/node/client/socket.io.js') ?>" defer></script>
 
 <!-- additional scripts for this page -->
 <?php if(isset($additional_scripts))

@@ -71,10 +71,20 @@ Vagrant.configure("2") do |config|
   echo "Done!"
 
   echo ""
+  echo "Install NodeJS..."
+  sudo apt-get install curl -y
+  curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+  sudo apt-get install nodejs
+  echo ""
+  echo "Done!"
+
+  echo ""
   echo "Configuring firewall..."
   sudo ufw allow http
   sudo ufw allow https
   sudo ufw allow 8080
+  sudo ufw allow 1111 #nodejs port :P
+  sudo ufw allow 1111/tcp
   sudo ufw allow ssh
   sudo ufw allow ftp
   sudo ufw enable

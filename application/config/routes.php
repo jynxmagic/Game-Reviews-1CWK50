@@ -74,6 +74,10 @@ $route['review/comments/(:any)'] = 'Comments/getCommentsForReview/$1';
 $route['review/comments/(:any)/postComment'] = 'Comments/postCommentToReview/$1';
 
 
+//CHAT CONTROLLER
+$route['checkServerStatus'] = 'Chat/checkServerStatus';
+
+
 
 $route['response-user'] = 'Home/UserName';
 $route['404_override'] = '';
