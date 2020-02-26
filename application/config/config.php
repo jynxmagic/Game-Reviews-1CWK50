@@ -31,7 +31,7 @@ $config['csrf_protection'] = TRUE; # user_guide/libraries/security.html
 //this way of defining the base URL makes it dynamic (depending on the request) and easier to use across multiple environments. If the user managed to successfully connect to the web server, we'll use whatever URL they're connecting with.
  
 
-$base_url = "http://100.70.63.58/"; //define custom base url here (dns server name + subdirectories)
+$base_url = "http://100.70.62.26/"; //define custom base url here (dns server name + subdirectories)
 
 $config['base_url'] = $base_url;
 
