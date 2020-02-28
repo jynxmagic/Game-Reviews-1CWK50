@@ -1,4 +1,4 @@
-<div id="chat" class="container">
+<div id="chat" class="position-fixed fixed-bottom col-3 bg-light text-dark rounded border">
 	<div v-if="code == 200">
 		<!-- chat server is online! -->
 		Chat online
@@ -11,7 +11,7 @@
 		<button v-on:click="sendMessage()" class="btn row bg-white btn-hover" id="chatsubmit">Send Message</button>
 	</div>
 	<div v-else>
-		Chat offline
+		Chat offline: {{reason}}
 	</div>
 </div>
 
@@ -42,6 +42,14 @@
 		<div class="blockquote-footer text-center text-info border-top border-white pt-1">Created with ❤ by: <span class="text-white">Chris Carr</span></div>
 	</div>
 </footer>
+
+
+
+
+<!-- base url from CodeIgniter required for vue scripts -->
+<input type="hidden" value="<?php echo base_url() ?>" id="base_url_input" />
+
+
 
 <script src="<?php echo base_url('application/scripts/jquery.min.js') ?>" defer></script>
 <script src="<?php echo base_url('application/scripts/bootstrap.min.js') ?>" defer></script>

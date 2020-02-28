@@ -12,7 +12,7 @@ var app = new Vue({
 		getComments: function (reviewID)
 		{
 			let self = this; //https://stackoverflow.com/questions/44869287/set-object-in-data-from-a-method-in-vue-js . can't set data using "this" inside ajax get. save "this" into "self" ;>)
-			$.get('/review/comments/'+reviewID, function(data, status){
+			$.get($('#base_url_input').val()+'/review/comments/'+reviewID, function(data, status){
 				if(status == 'success' || status == 200)
 				{
 					self.Comments = data;
@@ -30,7 +30,7 @@ var app = new Vue({
 			let reviewID = window.location.href.split('/').pop();
 			let comment = $('#commentInput').val();
 
-			$.post('/review/comments/'+reviewID+'/postComment', {comment: comment}, function(){
+			$.post($('#base_url_input').val()+'/review/comments/'+reviewID+'/postComment', {comment: comment}, function(){
 
 			});
 

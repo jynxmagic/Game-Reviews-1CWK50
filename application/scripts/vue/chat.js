@@ -13,10 +13,11 @@ var app = new Vue({
 
 		checkServerStatus: function() {
 			let self = this;
-			$.get('/checkServerStatus', function (data, status) {
-				if(data == "false")
+			$.get($('#base_url_input').val()+'/checkServerStatus', function (data, status) {
+				if(data === "false")
 				{
 					self.code = 500;
+					self.reason = "server offline."
 				}
 				else
 				{
@@ -31,7 +32,7 @@ var app = new Vue({
 
 		openConnection: function()
 		{
-			this.socket = io.connect('http://100.70.62.26:1111/');
+			this.socket = io.connect(window.location.host+':1111/');
 
 			this.socket.on('server message', function(data){
 				console.log("server message recieved");

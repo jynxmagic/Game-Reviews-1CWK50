@@ -1,6 +1,6 @@
 ////PLEASE CHANGE BASE URL AND PORT AS REQUIRED. UR IPV4 ADDRESS ///////////
 let port = 1111;
-let url = '100.70.62.26';
+let url = '100.70.61.182';
 
 
 const server = require('http').createServer(handler);
