@@ -10,18 +10,16 @@ class Chat extends CI_Controller
 
 	public function checkServerStatus()
 	{
-		$url = substr(base_url(), 0, -1).':1111';
 		$ch = curl_init();
 
-		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_URL, USER_CONFIGURATION['node_server']['ip']);
+		curl_setopt($ch, CURLOPT_PORT, USER_CONFIGURATION['node_server']['port']);
+		curl_setopt($ch, CURLOPT_LOCALPORT, USER_CONFIGURATION['node_server']['port']);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 0);
 
 		$result = curl_exec($ch);
 
-		if($result == "")
-		{
-			echo "false";
-			return;
-		}
+		curl_close($ch);
 
 		return $result;
 	}

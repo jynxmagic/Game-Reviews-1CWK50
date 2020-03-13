@@ -9,7 +9,7 @@
 		"host": "localhost",
 		"path": "/17105584",
 		"port": "80",
-		"index_page": ""
+		"index_page": "index.php"
 	},
 	"node_server": {
 		"ip": "localhost",

@@ -14,6 +14,8 @@ var app = new Vue({
 		checkServerStatus: function() {
 			let self = this;
 			$.get($('#base_url_input').val()+'/checkServerStatus', function (data, status) {
+
+				console.log(data);
 				if(data === "false")
 				{
 					self.code = 500;
@@ -21,9 +23,9 @@ var app = new Vue({
 				}
 				else
 				{
-					self.code = 200;
+			//		self.code = 200;
 					//server is online. lets open a websocket to it
-					self.openConnection();
+	///				self.openConnection();
 
 				}
 			});
