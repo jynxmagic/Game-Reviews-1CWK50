@@ -10,7 +10,7 @@ server.listen(port, url);
 
 function handler (req, res) {
 		res.writeHead(200);
-		res.end("Server online.");
+		res.end("true");
 }
 
 io.httpServer.on('listening', function () {

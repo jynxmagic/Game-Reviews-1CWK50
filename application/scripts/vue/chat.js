@@ -2,7 +2,9 @@ var app = new Vue({
 	el: "#chat",
 	data: {
 		code: "",
-		socket: ""
+		socket: "",
+		reason: "",
+		node_url: $('#node_host').val()
 	},
 
 	created(){
@@ -15,17 +17,16 @@ var app = new Vue({
 			let self = this;
 			$.get($('#base_url_input').val()+'/checkServerStatus', function (data, status) {
 
-				console.log(data);
-				if(data === "false")
+				if(data !== "true")
 				{
 					self.code = 500;
 					self.reason = "server offline."
 				}
 				else
 				{
-			//		self.code = 200;
+					self.code = 200;
 					//server is online. lets open a websocket to it
-	///				self.openConnection();
+					self.openConnection();
 
 				}
 			});
@@ -34,7 +35,7 @@ var app = new Vue({
 
 		openConnection: function()
 		{
-			this.socket = io.connect(window.location.host+':1111/');
+			this.socket = io.connect(this.node_url);
 
 			this.socket.on('server message', function(data){
 				console.log("server message recieved");

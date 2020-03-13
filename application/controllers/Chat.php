@@ -12,15 +12,11 @@ class Chat extends CI_Controller
 	{
 		$ch = curl_init();
 
-		curl_setopt($ch, CURLOPT_URL, USER_CONFIGURATION['node_server']['ip']);
-		curl_setopt($ch, CURLOPT_PORT, USER_CONFIGURATION['node_server']['port']);
-		curl_setopt($ch, CURLOPT_LOCALPORT, USER_CONFIGURATION['node_server']['port']);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 0);
+		curl_setopt($ch, CURLOPT_URL, USER_CONFIGURATION['node_server']['ip'].':'.USER_CONFIGURATION['node_server']['port']);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 		$result = curl_exec($ch);
 
-		curl_close($ch);
-
-		return $result;
+		echo $result;
 	}
 }

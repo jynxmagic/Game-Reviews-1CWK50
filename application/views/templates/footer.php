@@ -47,7 +47,8 @@
 
 
 <!-- base url from CodeIgniter required for vue scripts -->
-<input type="hidden" value="<?php echo base_url() ?>" id="base_url_input" />
+<input type="hidden" value="<?php echo site_url() ?>" id="base_url_input" />
+<input type="hidden" value="<?php echo 'http://'.USER_CONFIGURATION['node_server']['ip'].':'.USER_CONFIGURATION['node_server']['port'] ?>" id="node_host" />
 
 
 

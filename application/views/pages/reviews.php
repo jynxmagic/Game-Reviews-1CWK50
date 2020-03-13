@@ -9,7 +9,7 @@
 			<div class="text-dark card-body text-center">
 				<div class="card-title font-weight-bolder"><?php echo $review->GameName ?></div>
 				<div class="card-text"><?php echo $review->GameReview ?></div>
-				<a href="<?php echo base_url('review/'.$review->ID) ?>" class="mt-2 btn btn-primary">Check out this review</a>
+				<a href="<?php echo site_url('review/'.$review->ID) ?>" class="mt-2 btn btn-primary">Check out this review</a>
 			</div>
 		</div>
 	</div>
