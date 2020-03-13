@@ -33,6 +33,8 @@
 		</div>
 	</div>
 
+	<input type="hidden" value="<?php echo $review->ID?>" id="review_id" /> <!-- this value is used in vue_review.js -->
+
 	<?php endif; ?>
 
 </section>
