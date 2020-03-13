@@ -1,0 +1,18 @@
+{
+	"mysql": {
+		"host": "localhost",
+		"username": "root",
+		"password": "",
+		"database": "gamereview"
+	},
+	"codeigniter_webserver": {
+		"host": "localhost",
+		"path": "/17105584",
+		"port": "80",
+		"index_page": ""
+	},
+	"node_server": {
+		"ip": "localhost",
+		"port": "1111"
+	}
+}

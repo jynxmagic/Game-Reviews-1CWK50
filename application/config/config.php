@@ -28,15 +28,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['csrf_protection'] = TRUE; # user_guide/libraries/security.html
 
-//this way of defining the base URL makes it dynamic (depending on the request) and easier to use across multiple environments. If the user managed to successfully connect to the web server, we'll use whatever URL they're connecting with.
- 
+DEFINE('USER_CONFIGURATION', json_decode(
+		file_get_contents("config.json", true)
+		, true)
+); //ALSO USED IN DATABASE FILES SO GLOBAL DEFINED VARIABLE IS HERE
 
-$base_url = "http://100.70.61.182/"; //define custom base url
+$base_url = "http://" . USER_CONFIGURATION['codeigniter_webserver']['host'];
+$base_url .= ":" . USER_CONFIGURATION['codeigniter_webserver']['port'];
+$base_url .= USER_CONFIGURATION['codeigniter_webserver']['path'] . "/";
 
 $config['base_url'] = $base_url;
 
-
-### CHANGED CONFIGS END ###
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +50,7 @@ $config['base_url'] = $base_url;
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = USER_CONFIGURATION['codeigniter_webserver']['index_page'];
 
 /*
 |--------------------------------------------------------------------------
