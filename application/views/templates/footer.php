@@ -1,9 +1,10 @@
 <div id="chat" class="position-fixed fixed-bottom col-3 bg-light text-dark rounded border">
+<?php if(isset($is_logged_in) && isset($username)){ ?>
 	<div v-if="code == 200">
 		<!-- chat server is online! -->
 		Chat online
 
-		<div id="chatbox" class="row">
+		<div id="chatbox" class="container">
 
 		</div>
 
@@ -13,6 +14,9 @@
 	<div v-else>
 		Chat offline: {{reason}}
 	</div>
+<?php } else{
+	echo "Please login/register to use chat! ";
+}?>
 </div>
 
 <footer class="footer mt-5 pt-2 rounded-top page-footer py-3" style="background-color: black">
@@ -46,10 +50,12 @@
 
 
 
-<!-- base url from CodeIgniter required for vue scripts -->
+<!-- hidden inputs required for vue scripts -->
 <input type="hidden" value="<?php echo site_url() ?>" id="base_url_input" />
 <input type="hidden" value="<?php echo 'http://'.USER_CONFIGURATION['node_server']['ip'].':'.USER_CONFIGURATION['node_server']['port'] ?>" id="node_host" />
-
+<?php if(isset($is_logged_in) && isset($username)): ?>
+	<input type="hidden" value="<?php echo $username ?>" id="user_name" />
+<?php endif; ?>
 
 
 <script src="<?php echo base_url('application/scripts/jquery.min.js') ?>" defer></script>

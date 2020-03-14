@@ -38,15 +38,21 @@ var app = new Vue({
 		{
 			this.socket = io.connect(this.node_url); //connect to server
 
-			this.socket.on('server message', function(data){ //when we have a global event defined as "server message", write it to the chatbox
-				$('#chatbox').append("<b>"+"Server Message: "+"</b>"+data+"<br>"); //tell users this was a server message
+			this.socket.on('basic_message', function(data){ //normal user messages appear different to server messages
+				console.log(data);
+				$('#chatbox').append("<p class='row'><i>"+data.user+":</i>" +data.message+"</p>"); //tell users this was a server message
+			});
+
+			this.socket.on('server_message', function(data){ //when we have a global event defined as "server message", write it to the chatbox
+				$('#chatbox').append("<p class='row'><b>"+"Server Message: "+"</b>"+data+"</p>"); //tell users this was a server message
 			});
 		},
 
 		sendMessage: function()
 		{
 			let message = $('#message'); //get the message value from the input
-			this.socket.emit('message', {message: message.val()}); //send the message data with the event name to node
+			let username = $('#user_name');
+			this.socket.emit('client_message_send', {user: username.val(),message: message.val()}); //send the message data with the event name to node
 			message.val(""); //clear the message
 		}
 	}

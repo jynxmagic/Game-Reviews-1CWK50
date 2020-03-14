@@ -21,12 +21,25 @@ io.httpServer.on('listening', function () { //server created event
 io.on('connection', function (socket) { //new connection
 	console.log('new connection :p'); //this could be logged in a file, with user info
 
-	io.emit('server message', "new user online!"); //send this event to all broker participants
+	io.emit('server_message', "new user online!"); //send this event to all broker participants
+
+
+	global_chat_messages.forEach(
+		function(data){
+			console.log(data);
+			socket.emit("basic_message", data)
+		}
+	);
 
 //	socket.on();
 
-	socket.on("message", function(data){ //when we receive this event, a user has sent us a message
-		io.emit("server message",  data.message) //emit a new event to all clients and pass the message the user sent as data for this event
+	socket.on("client_message_send", function(data){ //when we receive this event, a user has sent us a message
+		console.log(data);
+		global_chat_messages.push(data);
+		io.emit("basic_message",  data) //emit a new event to all clients and pass the message the user sent as data for this event
 	});
 
 });
+
+
+let global_chat_messages = [];
