@@ -1,6 +1,6 @@
 const config = require('../../../../config.json'); //this can be used to load json files in node
 let port = config.node_server.port; //get port from config
-let url = config.node_server.ip; //get ip from config
+let url = 'localhost'; //server only runs on localhost
 
 const server = require('http').createServer(handler); //require the http library and pass our handler as the callback function to this library. this is to handle http connections.
 
