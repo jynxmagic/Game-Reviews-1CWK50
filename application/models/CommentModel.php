@@ -10,8 +10,10 @@ class CommentModel extends CI_Model
 
 	public function getAllCommentsForReview($id)
 	{
-		$query = $this->db->get_where('gamescomments', array('ReviewID' => $id));
-		$result = $query->result();
+		$this->db->from('gamescomments');
+		$this->db->where('ReviewID', $id);
+		$this->db->join('users', 'users.UID = gamescomments.UserID');
+		$result =$this->db->get()->result();
 		return $result;
 	}
 

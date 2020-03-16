@@ -40,12 +40,13 @@ var app = new Vue({
 
 			let comment = $('#commentInput').val(); //get comment
 
+			let user_name= $('#user_name').val(); //get username
+
 			$.post($('#base_url_input').val()+'/review/comments/'+reviewID+'/postComment', {comment: comment}, function(){ //build url to post, in essense base_url.review_controller.review_id.method
-				//on post completed. could check for errors/success here.
 			});
 
-			//reload comment data
-			this.getComments(reviewID); //load latest comments. this is used as substitute for a success method within jQuery - if a user can't see their comment, they'll know something is wrong.
+			this.Comments.push({UserComment: comment, UserName: user_name}); //push our comment to the vue comment block
+
 		}
 	}
 });
