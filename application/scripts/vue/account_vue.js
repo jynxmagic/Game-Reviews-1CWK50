@@ -30,15 +30,13 @@ var app = new Vue({
 		updateIsAdmin : function(){
 			let self = this;
 			let is_admin = $('#customSwitch1').is(':checked');
-			console.log(self.data);
 			$.get(this.account_update_isadmin_controller_route+self.username+'/'+is_admin, function(data, status)
 			{
 				if(status == "success")
 				{
 					self.data.isAdmin = is_admin;
 				}
-			})
-			console.log(self.data);
+			});
 		}
 	}
 })

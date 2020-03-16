@@ -14,7 +14,7 @@
 	<?php echo link_tag('application/images/favicon.png', 'shortcut icon', 'image/ico'); ?>
 
 </head>
-<body class="bg-dark text-white min-vh-100">
+<body class="bg-dark text-white min-vh-100 min-vw-100" style="max-width: 100%">
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
 

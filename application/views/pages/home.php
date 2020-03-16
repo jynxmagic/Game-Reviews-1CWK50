@@ -19,16 +19,15 @@
 		$class = "carousel-item active";
 		foreach($result as $row)
 		{
-
-			$url = base_url('application/images/'.$row->ReviewImage);
-
+			$img_url = base_url('application/images/'.$row->ReviewImage);
+			$account_url = site_url('account/'.$row->UserName);
 			echo <<<EOT
 		<div class="$class img-fluid">
-			<img src="$url" alt="$row->GameName" height="500px" width="100%">
+			<img src="$img_url" alt="$row->GameName" height="500px" width="100%">
 			<div class="carousel-caption d-none d-md-block bg-dark border-top border-left border-right pb-5 rounded-top" style="bottom: 0;">
 				<h5>$row->GameName</h5>
 				<p>$row->GameReview</p>
-				<small>row->author</small>
+				<small>Review by: <a href="$account_url">$row->UserName</a></small>
 			</div>
 		</div>
 EOT;
@@ -46,8 +45,19 @@ EOT;
 	</a>
 </div>
 
-<div class="container mt-3">
-	<h1>Latest Reviews: </h1>
+<div class="container mt-5">
+	<div class="row mb-5 pb-3 border-bottom">
+		<h1 class="col-6">Latest Reviews: </h1>
+		<select class="col-6">
+			<option val="" selected>All</option>
+			<?php
+			foreach($slugs as $slug)
+			{
+				echo "<option value='".$slug->slug."'>".$slug->GameName."</option>";
+			}
+			?>
+		</select>
+	</div>
 	<?php $i = 3; ?>
 	<?php $reviews_size = sizeof($reviews); ?>
 	<?php foreach($reviews as $review): ?>
@@ -65,12 +75,6 @@ EOT;
 		<?php $i++; ?>
 		<?php if($i%4 == 2 || $i == $reviews_size+3) echo '</div>'; //these numbers are not made up ?>
 	<?php endforeach; ?>
-	</div> <!-- closing row div outside foreach -->
-	<div class="row justify-content-center"><?php if(isset($pagination)) echo $pagination; ?></div>
-</div>
+	<nav aria-label="Pagination" class="row justify-content-center"><?php if(isset($pagination)) echo $pagination; ?></nav>
 
-<!-- TODO This section needs editing to create the chat system using HTML
-<button id="chatButton" class="open-button btn btn-success" onclick="openForm()">Chat</button>
-<div class="chat-popup pull-right" id="myForm">
-<form id="myform" class="form-container">
-</form> -->
+</div>

@@ -35,7 +35,7 @@ io.httpServer.on('listening', function () { //server created event
 io.on('connection', function (socket) { //new connection
 
 	io.emit('server_message', "new user online!"); //send this event to all broker participants
-	socket.join("global_chat");
+	socket.join("global_chat"); //chat room A
 
 
 	//when a new user connects, send them all messages we have
@@ -71,27 +71,25 @@ io.on('connection', function (socket) { //new connection
 	socket.on("client_message_send", function(data){ //when we receive this event, a user has sent us a message
 
 		//to determine whether our user is an admin https://github.com/mysqljs/mysql#introduction
+		let query = mysql_connection.query("SELECT isAdmin FROM Users WHERE USERNAME = '"+escape(data.user)+"';"); //ensure username is escaped in query
 
-		mysql_connection.query("SELECT isAdmin FROM Users WHERE USERNAME = '"+escape(data.user)+"';", function(error, results, fields){ //ensure username is escaped in query
-			//callback function for connection complete, throw errors first
-			if(error) throw error;
+		//the sql queries are asynchronous so we must wait for them to finish
+		query.on('result', function(row){
 
-			data.is_admin = results[0].isAdmin; //there should only be 1 result as username is a unique value
+			data.is_admin = row.isAdmin; //there should only be 1 result as username is a unique value
 
+			//chat room to send message to is sent in the "data" json
+			if(data.room == "global_chat")
+			{
+				global_chat_messages.push(data); //store all global sent messages here
+			}
+			else
+			{
+				semi_global_chat_messages.push(data); //store chat room B messages
+			}
+
+			io.emit("basic_message",data); //emit a new event to all clients
 		});
-
-		//chat room to send message to is sent in the "data" json
-		if(data.room == "global_chat")
-		{
-			global_chat_messages.push(data); //store all sent messages here
-		}
-		else
-		{
-			semi_global_chat_messages.push(data);
-		}
-
-		io.emit("basic_message",data); //emit a new event to all clients
-
 
 	});
 

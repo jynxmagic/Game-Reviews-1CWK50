@@ -24,9 +24,10 @@ class ReviewModel extends CI_Model
 			$this->db->where('slug', $q);
 		}
 
-	//	show_error($this->db->get_compiled_select(FALSE));
+		$this->db->join('users', 'users.UID = activereviews.UserID');
 
-		return $this->db->query($this->db->get_compiled_select())->result();
+
+		return $this->db->get()->result();
 	}
 
 	public function getReviewWithId($id)
@@ -36,5 +37,13 @@ class ReviewModel extends CI_Model
 		$this->db->join('users', 'users.UID = activereviews.UserID');
 		$result = $this->db->get()->first_row();
 		return $result;
+	}
+
+	public function getDistinctSlugs()
+	{
+		$this->db->select('GameName','slug');
+		$this->db->distinct();
+		$this->db->from('activereviews');
+		return $this->db->get()->result();
 	}
 }

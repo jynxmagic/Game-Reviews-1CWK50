@@ -41,7 +41,7 @@ var app = new Vue({
 			this.socket.on('basic_message', function(data){ //normal user messages appear different to server messages
 				if(data.room == $('#selected_room').find(':selected').val()) //initial chat messages are from all rooms, add this to only append the messages of the room we are in
 				{
-					if (data.is_admin === 0 || data.is_admin === false)  //tell users this was a non-admin message
+					if (data.is_admin == 0 || data.is_admin == false)  //tell users this was a non-admin message
 					{
 						$('#chatbox').append("<p class='row'><i>" + data.user + ":</i>" + data.message + "</p>"); //jquery to append
 					} else {

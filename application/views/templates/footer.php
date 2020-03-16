@@ -31,7 +31,7 @@
 }?>
 </div>
 
-<footer class="footer mt-5 pt-2 rounded-top page-footer py-3" style="background-color: black">
+<footer class="footer mt-5 pt-2 rounded-top page-footer py-3 " style="background-color: black">
 	<div class="container-fluid">
 		<div class="row pb-3">
 			<div class="col-4">

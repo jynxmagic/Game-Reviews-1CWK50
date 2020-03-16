@@ -38,6 +38,7 @@ class UserModel extends CI_Model
 	 * returns a user based on username
 	 *
 	 * @param $username username to search for
+	 * @return user
 	 */
 	public function getUserByUsername($username)
 	{
