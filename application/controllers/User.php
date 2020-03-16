@@ -226,11 +226,20 @@ class User extends CI_Controller
 	 */
 	private function isValidPostData()
 	{
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[16]',
+		$this->form_validation->set_rules('username', 'Username',
 			array(
-				'required'      => 'You have not provided %s.'
-			)
+				'required',
+				'trim',
+				'minlength[5]',
+				'maxlength[5]',
+				array('valid_username', array($this->UserModel, 'isValidUsername')) /** callback function for verification which checks for valid user. see user_guide/libraries/form_validation.html#callable-use-anything-as-a-rule */
+			),
+			array(
+				'required'      => 'You have not provided %s.',
+				)
 		);
+
+		$this->form_validation->set_message('valid_username', "The username you have entered already exists."); /* create an error message for our custom error */
 
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|max_length[16]');
 

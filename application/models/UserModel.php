@@ -66,6 +66,19 @@ class UserModel extends CI_Model
 			$this->db->update('users');
 		}
 	}
+
+	/**
+	 * callback function for username verification by codeigniter to check if the username is valid
+	 * @param $username
+	 * @return bool
+	 */
+	public function isValidUsername($username)
+	{
+		//if username already exists it is invalid
+		$user = $this->getUserByUsername($username);
+		if(isset($user->UserName)) return false;
+		return true;
+	}
 }
 
 

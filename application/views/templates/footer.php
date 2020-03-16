@@ -69,6 +69,7 @@
 	<input type="hidden" value="<?php echo $username ?>" id="user_name" />
 <?php endif; ?>
 
+<div id="vue-loading-modal"></div> <!-- ajax requests show this modal whilst data is processing-->
 
 <script src="<?php echo base_url('application/scripts/jquery.min.js') ?>" defer></script>
 <script src="<?php echo base_url('application/scripts/bootstrap.min.js') ?>" defer></script>
