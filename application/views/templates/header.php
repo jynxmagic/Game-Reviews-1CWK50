@@ -10,6 +10,7 @@
 
 	<!-- link tags -->
 	<?php echo link_tag('application/css/bootstrap.min.css'); ?>
+	<?php echo link_tag('application/css/all.css'); ?>
 	<?php echo link_tag('application/images/favicon.png', 'shortcut icon', 'image/ico'); ?>
 
 </head>

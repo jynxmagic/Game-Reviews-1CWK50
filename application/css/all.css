@@ -1,0 +1,11 @@
+#chat{
+	opacity: .5;
+}
+
+#chat:hover{
+	opacity: 1;
+}
+
+#chat-login-text{
+	font-size: 1.2rem;
+}

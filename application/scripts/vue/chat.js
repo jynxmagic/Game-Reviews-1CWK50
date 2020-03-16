@@ -39,14 +39,15 @@ var app = new Vue({
 			this.socket = io.connect(this.node_url); //connect to server
 
 			this.socket.on('basic_message', function(data){ //normal user messages appear different to server messages
-				if(data.is_admin === 0 || data.is_admin === false)  //tell users this was a non-admin message
+				if(data.room == $('#selected_room').find(':selected').val()) //initial chat messages are from all rooms, add this to only append the messages of the room we are in
 				{
-					$('#chatbox').append("<p class='row'><i>"+data.user+":</i>" +data.message+"</p>"); //jquery to append
-				}
-				else
-				{
-					//admin messages
-					$('#chatbox').append("<p class='row'><b>"+data.user+":</b>" +data.message+"</p>"); //admin users appear bold, along with server messages
+					if (data.is_admin === 0 || data.is_admin === false)  //tell users this was a non-admin message
+					{
+						$('#chatbox').append("<p class='row'><i>" + data.user + ":</i>" + data.message + "</p>"); //jquery to append
+					} else {
+						//admin messages
+						$('#chatbox').append("<p class='row'><b>" + data.user + ":</b>" + data.message + "</p>"); //admin users appear bold, along with server messages
+					}
 				}
 			});
 
@@ -59,8 +60,16 @@ var app = new Vue({
 		{
 			let message = $('#message'); //get the message value from the input
 			let username = $('#user_name');
-			this.socket.emit('client_message_send', {user: username.val(),message: message.val()}); //send the message data with the event name to node
+			let room = $('#selected_room').find(':selected').val();
+			this.socket.emit('client_message_send', {user: username.val(),message: message.val(), room: room}); //send the message data with the event name to node
 			message.val(""); //clear the message
+		},
+
+		changeRoom: function()
+		{
+			let room = $('#selected_room').find(':selected').val();
+			$('#chatbox').empty();
+			this.socket.emit('change_room', {room: room})
 		}
 	}
 });
