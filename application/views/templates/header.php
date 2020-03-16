@@ -23,14 +23,20 @@
 			<?php if(isset($is_logged_in) && isset($username)) echo "<p class=\"text-white pl-5 mt-3\">Hi, $username. Nice to see you.</p>"?>
 
 			<ul class="nav float-right pl-4">
-				<li class="nav-item pr-4"><a href="<?php  echo site_url('/login') ?>">Login</a></li>
-				<li class="nav-item pr-4"><a href="<?php  echo site_url('/logout') ?>">Logout</a></li>
-				<li class="nav-item pr-4"><a href="<?php  echo site_url('/register') ?>">Register</a></li>
+
 				<li class="nav-item pr-4"><a href="<?php  echo site_url('/reviews') ?>">Latest Reviews</a></li>
 				<?php
 				if(isset($is_logged_in) && isset($username)) {
+					//if user is logged in, show my account & logout links
 					$href = site_url('account/'.$username);
 					echo "<li class=\"nav-item pr-4\"><a href=\"$href\">My Account</a></li>";
+					echo "<li class=\"nav-item pr-4\"><a href=\"".site_url('/logout')."\">Logout</a></li>";
+				}
+				else
+				{
+					//if user is not logged in, show login & register links
+					echo "<li class=\"nav-item pr-4\"><a href=\"".site_url('/login')."\">Login</a></li>";
+					echo "<li class=\"nav-item pr-4\"><a href=\"".site_url('/register')."\">Register</a></li>";
 				}
 				?>
 			</ul>

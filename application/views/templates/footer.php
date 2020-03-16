@@ -1,10 +1,9 @@
-<div id="chat" class="position-fixed fixed-bottom col-3 bg-light text-dark rounded border">
+<div id="chat" class="position-fixed fixed-bottom col-3 bg-light text-dark rounded border" style="min-height: 5%; max-height: 10%">
 <?php if(isset($is_logged_in) && isset($username)){ ?>
 	<div v-if="code == 200">
 		<!-- chat server is online! -->
 		Chat online
-
-		<div id="chatbox" class="container">
+		<div id="chatbox" class="container overflow-auto">
 
 		</div>
 
@@ -61,9 +60,13 @@
 <script src="<?php echo base_url('application/scripts/jquery.min.js') ?>" defer></script>
 <script src="<?php echo base_url('application/scripts/bootstrap.min.js') ?>" defer></script>
 <script src="<?php echo base_url('application/scripts/vue/vue.js') ?>" defer></script>
-<script src="<?php echo base_url('application/scripts/vue/chat.js')?>" defer></script>
 <script src="<?php echo base_url('application/scripts/popper.min.js') ?>" defer></script>
-<script src="<?php echo base_url('application/scripts/node/client/socket.io.js') ?>" defer></script>
+
+<?php if(isset($is_logged_in) && isset($username)): ?>
+	<script src="<?php echo base_url('application/scripts/node/client/socket.io.js') ?>" defer></script>
+	<script src="<?php echo base_url('application/scripts/vue/chat.js')?>" defer></script>
+	<!-- only include the chat js files if users are logged in -->
+<?php endif; ?>
 
 <!-- additional scripts for this page -->
 <?php if(isset($additional_scripts))

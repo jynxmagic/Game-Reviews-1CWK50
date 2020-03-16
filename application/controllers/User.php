@@ -88,6 +88,7 @@ class User extends CI_Controller
 		if($user !== FALSE)
 		{
 			$data['user'] = $user;
+			$data['additional_scripts'] = array(base_url('application/scripts/vue/account_vue.js'));
 			$this->load->view('pages/account', $data);
 		}
 		else
@@ -245,6 +246,17 @@ class User extends CI_Controller
 		{
 			return false;
 		}
+	}
+
+	/**
+	 * @param $username
+	 * returns a JSON response containing the user data
+	 */
+	public function getUserJsonByUsername($username)
+	{
+		$user = $this->getUserByUsername($username);
+
+		echo json_encode($user);
 	}
 
 	/**

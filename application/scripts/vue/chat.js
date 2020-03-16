@@ -16,9 +16,9 @@ var app = new Vue({
 
 		checkServerStatus: function() {
 			let self = this; //see review_vue.js
-			$.get($('#base_url_input').val()+'/checkServerStatus', function (data, status) { //call controller
+			$.get($('#base_url_input').val()+'/checkServerStatus', function (data, status) { //GET request to controller route
 
-				if(data !== "true") //server returns true on http requests if is online
+				if(data !== "true") //node returns true on http requests if is online
 				{
 					self.code = 500;
 					self.reason = "server offline."
@@ -39,8 +39,15 @@ var app = new Vue({
 			this.socket = io.connect(this.node_url); //connect to server
 
 			this.socket.on('basic_message', function(data){ //normal user messages appear different to server messages
-				console.log(data);
-				$('#chatbox').append("<p class='row'><i>"+data.user+":</i>" +data.message+"</p>"); //tell users this was a server message
+				if(data.is_admin === 0 || data.is_admin === false)  //tell users this was a non-admin message
+				{
+					$('#chatbox').append("<p class='row'><i>"+data.user+":</i>" +data.message+"</p>"); //jquery to append
+				}
+				else
+				{
+					//admin messages
+					$('#chatbox').append("<p class='row'><b>"+data.user+":</b>" +data.message+"</p>"); //admin users appear bold, along with server messages
+				}
 			});
 
 			this.socket.on('server_message', function(data){ //when we have a global event defined as "server message", write it to the chatbox
