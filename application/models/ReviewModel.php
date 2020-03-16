@@ -8,9 +8,11 @@ class ReviewModel extends CI_Model
 		$this->load->database();
 	}
 
-	public function reviewCount()
+	public function reviewCount($slug = "")
 	{
-		return $this->db->count_all('activereviews');
+		if($slug != "") $this->db->where('slug', $slug);
+
+		return $this->db->count_all_results('activereviews', TRUE);
 	}
 
 	public function getLatest6Reviews($start_pos = 0, $q = "") //todo query search string
@@ -41,7 +43,7 @@ class ReviewModel extends CI_Model
 
 	public function getDistinctSlugs()
 	{
-		$this->db->select('GameName','slug');
+		$this->db->select(array('GameName','slug'));
 		$this->db->distinct();
 		$this->db->from('activereviews');
 		return $this->db->get()->result();

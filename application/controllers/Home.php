@@ -45,7 +45,7 @@ class Home extends CI_Controller{
 
 		#user_guide/libraries/pagination.html#customizing-the-pagination
 		$config['base_url'] = site_url('/');
-		$config['total_rows'] = $this->ReviewModel->reviewCount();
+		$config['total_rows'] = $this->ReviewModel->reviewCount($slug);
 		$config['per_page'] = 6;
 		$config['page_query_string'] = TRUE;
 		$config['query_string_segment'] = 'start_pos';

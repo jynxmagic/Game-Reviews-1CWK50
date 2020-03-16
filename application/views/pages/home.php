@@ -48,12 +48,12 @@ EOT;
 <div class="container mt-5">
 	<div class="row mb-5 pb-3 border-bottom">
 		<h1 class="col-6">Latest Reviews: </h1>
-		<select class="col-6">
-			<option val="" selected>All</option>
+		<select class="col-6" id="slug_select">
+			<option value="">All</option>
 			<?php
 			foreach($slugs as $slug)
 			{
-				echo "<option value='".$slug->slug."'>".$slug->GameName."</option>";
+				echo "<option id='".$slug->slug."' value='".$slug->slug."'>".$slug->GameName."</option>";
 			}
 			?>
 		</select>
