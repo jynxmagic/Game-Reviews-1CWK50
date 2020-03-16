@@ -100,6 +100,28 @@ class User extends CI_Controller
 	}
 
 	/**
+	 * @param $username
+	 * returns a JSON response containing the user data
+	 */
+	public function getUserJsonByUsername($username)
+	{
+		$user = $this->getUserByUsername($username);
+
+		echo json_encode($user);
+	}
+
+	/**
+	 * updates the isAdmin property of specific user to supplied value
+	 *
+	 * @param $username username of user to update
+	 * @param $is_admin value to update is_admin to
+	 */
+	public function updateIsAdmin($username, $is_admin)
+	{
+		$this->UserModel->updateIsAdmin($username, $is_admin);
+	}
+
+	/**
 	 * Perform the register action
 	 */
 	public function do_register()
@@ -246,17 +268,6 @@ class User extends CI_Controller
 		{
 			return false;
 		}
-	}
-
-	/**
-	 * @param $username
-	 * returns a JSON response containing the user data
-	 */
-	public function getUserJsonByUsername($username)
-	{
-		$user = $this->getUserByUsername($username);
-
-		echo json_encode($user);
 	}
 
 	/**

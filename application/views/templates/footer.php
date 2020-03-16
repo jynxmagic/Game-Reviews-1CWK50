@@ -1,4 +1,4 @@
-<div id="chat" class="position-fixed fixed-bottom col-3 bg-light text-dark rounded border" style="min-height: 5%; max-height: 10%">
+<div id="chat" class="position-fixed fixed-bottom col-3 bg-light text-dark rounded border overflow-auto" style="max-height: 30%">
 <?php if(isset($is_logged_in) && isset($username)){ ?>
 	<div v-if="code == 200">
 		<!-- chat server is online! -->

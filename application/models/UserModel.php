@@ -48,6 +48,24 @@ class UserModel extends CI_Model
 			return $result;
 		}
 	}
+
+	public function updateIsAdmin($username, $is_admin)
+	{
+		if($is_admin == "true")
+		{
+			$is_admin = 1;
+		}
+		else
+		{
+			$is_admin = 0;
+		}
+		if(isset($username))
+		{
+			$this->db->set('isAdmin', $is_admin);
+			$this->db->where('UserName', $username);
+			$this->db->update('users');
+		}
+	}
 }
 
 
