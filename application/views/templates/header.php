@@ -25,7 +25,6 @@
 
 			<ul class="nav float-right pl-4">
 
-				<li class="nav-item pr-4"><a href="<?php  echo site_url('/reviews') ?>">Latest Reviews</a></li>
 				<?php
 				if(isset($is_logged_in) && isset($username)) {
 					//if user is logged in, show my account & logout links

@@ -54,7 +54,6 @@ $route['default_controller'] = 'Home';
 $route['index'] = 'Home/index';
 
 //REVIEW CONTROLLER
-$route['reviews'] = 'Review';
 $route['review/(:any)'] = 'Review/review/$1';
 
 

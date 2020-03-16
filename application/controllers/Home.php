@@ -13,41 +13,42 @@ class Home extends CI_Controller{
 
         // Load in your Models below.
         $this->load->model('HomeModel');
-        
+		$this->load->model('ReviewModel');
         // Consider creating new Models for different functionality.
     }
 
     public function index()
     {
-        // Check to see if the User exists on the homepage. You will need to change this to look up the existance of a cookie.
-        $userExists = '';
-
-        //Load data required for web page in array.
-
-
         // Change this to whatever title you wish.
         $data['title']       = 'Games Reviews - Homepage';
 		$data['result'] = $this->HomeModel->getGame();
-		$data['additional_scripts'] = array(base_url('application/scripts/home.js'));
+		$data['additional_scripts'] = array(base_url('application/scripts/home.js')); //home page js woo
 		if(isset($this->session->userdata['is_logged_in']))
 		{
 			$data['is_logged_in'] = $this->session->userdata['is_logged_in'];
 			$data['username'] = $this->session->userdata['username'];
 		}
 
+		$this->load->library('pagination');
 
-        // Condition checking if the user exists.
-        if (!$userExists)
-        {
-            //The user doesn't exist so change your page accordigly.
-        }
-        else
-        {
-            //The user does exist so change your page accordigly.
-        }
+		$start_pos = $this->input->get('per_page', TRUE);
+		$slug = $this->input->get("slug");
 
-        
-        // Get the data from our Home Model.
+		$reviews = $this->ReviewModel->getLatest6Reviews($start_pos, $slug);
+
+		$config['base_url'] = site_url('/');
+		$config['total_rows'] = $this->ReviewModel->reviewCount();
+		$config['per_page'] = 6;
+		$config['page_query_string'] = TRUE;
+
+		//load pagination with config we just made
+		$this->pagination->initialize($config);
+
+
+		//review data to pass to view
+		$data['pagination'] = $this->pagination->create_links();
+		$data['reviews'] = $reviews;
+
 
 
         //Load the view and send the data accross.
