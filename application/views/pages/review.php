@@ -1,7 +1,7 @@
 <section class="container text-center">
 
 	<h1>Reivew of - <?php echo $review->GameName ?></h1>
-	<h2>Review by <a href="<?php echo base_url('/account/') ?>">Account name placeholder</a></h2>
+	<h2>Review by <a href="<?php echo site_url('/account/').$review->UserName ?>"><?php echo $review->UserName ?></a></h2>
 
 	<?php echo img('application/images/'.$review->ReviewImage); ?>
 
@@ -19,6 +19,7 @@
 		<!-- post new comment -->
 		<input type="textarea" id="commentInput" />
 		<button v-on:click="postNewComment()" class="btn-lg btn-success">Submit</button>
+		<button v-on:click="getComments()" class="btn-lg btn-success">Reload Comments</button>
 		 <!-- Check if there are more than 0 comments, if so display them. If not, display a message explaining there are no comments. -->
 		<div v-if="Comments.length == 0">
 			<p>No Comments have been added to this review yet.</p>
