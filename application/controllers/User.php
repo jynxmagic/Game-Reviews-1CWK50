@@ -126,13 +126,14 @@ class User extends CI_Controller
 	 */
 	public function do_register()
 	{
+		//function which validates post input
 		$isValid = $this->isValidPostData();
 
 		if($isValid)
 		{
 			#get post data
 			$data = array(
-				'username' => xss_clean($this->input->post('username')),
+				'username' => xss_clean($this->input->post('username')), //cross site scripting
 				'password' => xss_clean($this->input->post('password'))
 			);
 
@@ -140,6 +141,7 @@ class User extends CI_Controller
 			$user = $this->getUserByUsername($data['username']);
 			if(isset($user->UserName))
 			{
+				//username needs to be unique
 				$data['error'] = "Username already exists";
 				$this->load->view('pages/register', $data);
 			}
@@ -236,6 +238,7 @@ class User extends CI_Controller
 	 */
 	private function isValidPostData()
 	{
+		# user_guide/libraries/form_validation.html
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[16]',
 			array(
 				'required'      => 'You have not provided %s.',
@@ -248,8 +251,8 @@ class User extends CI_Controller
 	}
 
 	/**
-	 * logs in the user
-	 * @param $user user to set the data about
+	 * "logs in" the user. sets the session variables 'username' & 'is_logged_in'
+	 * @param $user user object to gather data about
 	 */
 	private function setLoginSessionData($user)
 	{

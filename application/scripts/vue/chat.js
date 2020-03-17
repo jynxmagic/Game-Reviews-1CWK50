@@ -14,6 +14,9 @@ var app = new Vue({
 
 	methods: {
 
+		/**
+		 * Calls codeigniter to check if node server is online. opens the connection to node if so
+		 */
 		checkServerStatus: function() {
 			let self = this; //see review_vue.js
 			$.get($('#base_url_input').val()+'/checkServerStatus', function (data, status) { //GET request to controller route
@@ -34,6 +37,10 @@ var app = new Vue({
 
 		},
 
+
+		/**
+		 * uses socket.io library to open a socket connection to node.
+		 */
 		openConnection: function()
 		{
 			this.socket = io.connect(this.node_url); //connect to server
@@ -56,6 +63,9 @@ var app = new Vue({
 			});
 		},
 
+		/**
+		 * Sends a chat message to node
+		 */
 		sendMessage: function()
 		{
 			let message = $('#message'); //get the message value from the input
@@ -65,6 +75,9 @@ var app = new Vue({
 			message.val(""); //clear the message
 		},
 
+		/**
+		 * emits "change_room" event to node
+		 */
 		changeRoom: function()
 		{
 			let room = $('#selected_room').find(':selected').val();

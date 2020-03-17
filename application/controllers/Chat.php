@@ -8,6 +8,10 @@ class Chat extends CI_Controller
 		parent::__construct();
 	}
 
+
+	/**
+	 * Checks to see if the node server is online. If node server is only it returns the response data "true"
+	 */
 	public function checkServerStatus()
 	{
 		$ch = curl_init();

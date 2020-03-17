@@ -14,7 +14,7 @@
 
 
 
-/** footer code: view-source:https://getbootstrap.com/docs/4.1/examples/sticky-footer/ **/
+/** footer code (to get it always at the bottom - "sticky footer"): view-source:https://getbootstrap.com/docs/4.1/examples/sticky-footer/ **/
 footer
 {
 	bottom: 0;

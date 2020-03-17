@@ -16,19 +16,26 @@ class Home extends CI_Controller{
         // Consider creating new Models for different functionality.
     }
 
+	/**
+	 * Homepage controller route
+	 */
     public function index()
     {
         // Change this to whatever title you wish.
         $data['title']       = 'Games Reviews - Homepage';
-		$data['result'] = $this->ReviewModel->getLatest6Reviews();
+
+		$data['result'] = $this->ReviewModel->getLatest6Reviews(); //for carousel
+
 		$data['additional_scripts'] = array(base_url('application/scripts/home.js')); //home page js. for carousel
+
+		//for nav manipulation
 		if(isset($this->session->userdata['is_logged_in']))
 		{
 			$data['is_logged_in'] = $this->session->userdata['is_logged_in'];
 			$data['username'] = $this->session->userdata['username'];
 		}
 
-		##get list of distinct slugs for pagination
+		##get list of distinct slugs for pagination of activereviews
 		$data['slugs'] = $this->ReviewModel->getDistinctSlugs();
 
 
@@ -40,7 +47,7 @@ class Home extends CI_Controller{
 		$start_pos = $this->input->get('start_pos', TRUE);
 		$slug = $this->input->get("slug", TRUE);
 
-		$reviews = $this->ReviewModel->getLatest6Reviews($start_pos, $slug);
+		$reviews = $this->ReviewModel->getLatest6Reviews($start_pos, $slug); //if slug is blank it returns all reviews with LIMIT 6 from start pos
 
 
 		#user_guide/libraries/pagination.html#customizing-the-pagination
@@ -52,7 +59,7 @@ class Home extends CI_Controller{
 		$config['reuse_query_string'] = TRUE;
 
 
-		##apply bootstrap style to generated pagination. basically repeated code for the config
+		##apply bootstrap style to generated pagination. basically repeated code for the config. awful
 		$config['full_tag_open'] = '<ul class="pagination">';
 		$config['full_tag_close'] = '</ul>';
 		$config['first_tag_open'] = '<li class="page-item">';
@@ -78,7 +85,7 @@ class Home extends CI_Controller{
 		$this->pagination->initialize($config);
 
 
-		//data to pass to view
+		//loaded data to pass to view
 		$data['pagination'] = $this->pagination->create_links();
 		$data['reviews'] = $reviews;
 

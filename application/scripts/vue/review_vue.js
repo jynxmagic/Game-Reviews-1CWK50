@@ -1,6 +1,7 @@
 /***
- * View file loaded on the review page. It's main function is to dynamically load review comments as they are added on the fly. The page does not need reloading
- * to view new comments - Vue allows for bidirectional communication.
+ * View file loaded on the review page. It's main function is to dynamically load review comments as they are added. A review button can be clicked. The page does not need reloading
+ * to view new comments.
+ *
  * @type {Vue}
  */
 var app = new Vue({
@@ -19,6 +20,9 @@ var app = new Vue({
 	},
 	methods: {
 		//method definitions
+		/**
+		 * attempts to get all comments for the review, alerts user if failed
+		 */
 		getComments: function ()
 		{
 			let self = this; //https://stackoverflow.com/questions/44869287/set-object-in-data-from-a-method-in-vue-js . can't set data using "this" inside ajax get. save "this" into "self" ;>)
@@ -35,6 +39,9 @@ var app = new Vue({
 			});
 		},
 
+		/**
+		 * posts a new comment to current review, alerts users if not logged in, or the comment is blank
+		 */
 		postNewComment: function() //this method is refereced vie vue:on-click within the html
 		{
 			let reviewID =  $('#review_id').val(); //get review id again
@@ -47,6 +54,10 @@ var app = new Vue({
 			if(user_name == undefined)
 			{
 				alert("You must be logged in to post a comment.");
+			}
+			else if(comment == "")
+			{
+				alert("Comment can not be blank.");
 			}
 			else
 			{

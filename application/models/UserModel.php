@@ -17,12 +17,15 @@ class UserModel extends CI_Model
 
 	/**
 	 * Creates a user in the database
-	 * @param $data username & password
+	 * @param $data array {username: "", password: ""}. password does not need to be hashed, it's obfuscated within this method.
 	 */
 	public function createUser($data)
 	{
 		$username = $data['username'];
+		//hash password using default tech
 		$hashed_password = password_hash($data['password'], PASSWORD_DEFAULT);
+
+		//hard coded
 		$dark_mode = 1;
 
 		$insert_data = array(
@@ -37,7 +40,7 @@ class UserModel extends CI_Model
 	/**
 	 * returns a user based on username
 	 *
-	 * @param $username username to search for
+	 * @param $username string username to search for
 	 * @return user
 	 */
 	public function getUserByUsername($username)
@@ -45,11 +48,19 @@ class UserModel extends CI_Model
 		if(isset($username))
 		{
 			$query = $this->db->get_where('users', array('UserName' => $username));
+			//there should only ever be 1 row
 			$result = $query->first_row();
 			return $result;
 		}
 	}
 
+
+	/**
+	 * Updates whether a user is an administrator or not.
+	 *
+	 * @param $username string username of user to update
+	 * @param $is_admin boolean
+	 */
 	public function updateIsAdmin($username, $is_admin)
 	{
 		if($is_admin == "true")
