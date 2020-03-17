@@ -17,6 +17,7 @@ class Review extends CI_Controller
 	public function review($id)
 	{
 		$data['title'] = "Game Review - All Reviews";
+		$data['additional_css'] = array('application/css/review.css');
 
 		if(isset($this->session->userdata['is_logged_in']))
 		{

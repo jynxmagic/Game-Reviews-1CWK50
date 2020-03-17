@@ -1,4 +1,4 @@
-<div id="chat" class="position-fixed fixed-bottom col-3 bg-light text-dark rounded border overflow-auto ml-2" style="max-height: 30%">
+<div id="chat" class="position-fixed fixed-bottom col-3 bg-light text-dark rounded border overflow-auto ml-2">
 <?php if(isset($is_logged_in) && isset($username)){ ?>
 	<div v-if="code == 200">
 		<!-- chat server is online! -->
@@ -15,11 +15,9 @@
 		</div>
 
 
-		<div class="">
-			<center>
+		<div class="justify-content-center">
 				<input id="message" type="text" class="col-12 mb-3"/>
 				<button v-on:click="sendMessage()" class="btn row btn-hover btn-success" id="chatsubmit">Send Message</button>
-			</center>
 		</div>
 
 	</div>
@@ -31,7 +29,7 @@
 }?>
 </div>
 
-<footer class="footer mt-5 pt-2 rounded-top page-footer py-3 " style="background-color: black">
+<footer class="footer mt-5 pt-2 rounded-top py-3">
 	<div class="container-fluid">
 		<div class="row pb-3">
 			<div class="col-4">

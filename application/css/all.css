@@ -1,5 +1,6 @@
 #chat{
 	opacity: .5;
+	max-height: 30%;
 }
 
 #chat:hover{
@@ -8,4 +9,28 @@
 
 #chat-login-text{
 	font-size: 1.2rem; /*nice on the eyes */
+}
+
+
+
+
+/** footer code: view-source:https://getbootstrap.com/docs/4.1/examples/sticky-footer/ **/
+footer
+{
+	bottom: 0;
+	background-color: black;
+	width: 100%;
+	position: absolute;
+	height: 180px;
+}
+
+body
+{
+	margin-bottom: 180px;
+}
+
+
+html {
+	position: relative;
+	min-height: 100%;
 }

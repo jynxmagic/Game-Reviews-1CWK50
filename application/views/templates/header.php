@@ -7,14 +7,23 @@
 	<?php if(isset($title)) echo meta('title', $title)."\n<title>$title</title>"; ?>
 	<?php if(isset($description)) echo meta('description', $description) ?>
 
-
 	<!-- link tags -->
 	<?php echo link_tag('application/css/bootstrap.min.css'); ?>
 	<?php echo link_tag('application/css/all.css'); ?>
 	<?php echo link_tag('application/images/favicon.png', 'shortcut icon', 'image/ico'); ?>
 
+	<?php if(isset($additional_css))
+	{
+		//this is only required for review page but is implemented in a way that is upgradable across all pages. array of additional css to incl.
+		foreach($additional_css as $css_link)
+		{
+			echo link_tag($css_link);
+		}
+	}
+	?>
+
 </head>
-<body class="bg-dark text-white min-vh-100 min-vw-100" style="max-width: 100%">
+<body class="bg-dark text-white">
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
 
