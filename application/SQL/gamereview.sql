@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2020 at 09:11 PM
+-- Generation Time: Mar 17, 2020 at 11:33 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `gamereview`
 --
+CREATE DATABASE IF NOT EXISTS `gamereview` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `gamereview`;
 
 -- --------------------------------------------------------
 
@@ -39,6 +41,11 @@ CREATE TABLE `activereviews` (
   `UserID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16le;
 
+--
+-- Truncate table before insert `activereviews`
+--
+
+TRUNCATE TABLE `activereviews`;
 --
 -- Dumping data for table `activereviews`
 --
@@ -66,6 +73,11 @@ CREATE TABLE `gamescomments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16le;
 
 --
+-- Truncate table before insert `gamescomments`
+--
+
+TRUNCATE TABLE `gamescomments`;
+--
 -- Dumping data for table `gamescomments`
 --
 
@@ -79,7 +91,17 @@ INSERT INTO `gamescomments` (`UID`, `UserID`, `ReviewID`, `UserComment`) VALUES
 (17, 2, 1, 'yeehaw added  a button'),
 (18, 2, 1, 'sick'),
 (19, 2, 1, 'k design now'),
-(20, 2, 2, 'heh');
+(20, 2, 2, 'heh'),
+(21, 3, 7, 'asd'),
+(22, 3, 7, 'hehe xd'),
+(23, 2, 6, 'GRAND strategy'),
+(24, 1, 7, 'test'),
+(25, 2, 7, 'hehehehehehehehehe'),
+(26, 2, 7, 'hehehehehehehehehe'),
+(27, 2, 7, 'hehehehehehehehehe'),
+(28, 2, 7, 'hehehehehehehehehe'),
+(29, 2, 7, 'sdada'),
+(30, 2, 7, 'qweqweqweqweqweqweq');
 
 -- --------------------------------------------------------
 
@@ -96,12 +118,19 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16le;
 
 --
+-- Truncate table before insert `users`
+--
+
+TRUNCATE TABLE `users`;
+--
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`UID`, `UserName`, `UserPassword`, `DarkMode`, `isAdmin`) VALUES
 (1, 'Lecturer', '$2y$10$LU6wToj/RlEltGwzmqrQSu1I4gZTllB5PxKYMGXozk3kiXZNNDhda', 1, 0),
-(2, 'tests', '$2y$10$uMQLePqycTE0OtBC8oqIU.6Q6qNvQ.FIjGpnS7ZoN4bNhVtlx/.jq', 1, 1);
+(2, 'tests', '$2y$10$uMQLePqycTE0OtBC8oqIU.6Q6qNvQ.FIjGpnS7ZoN4bNhVtlx/.jq', 1, 0),
+(3, 'sdfsss', '$2y$10$.3C8O038peZtiI2zVXRjfuNRNu4PeCwu4wgfIbHkW2pos7jFHnTse', 1, 1),
+(4, 'qqqqq', '$2y$10$cMpt5RjJlpnLZfEDi6E3nuH3fSN4lapRO2s1hiU23yPFrmxlJlZjK', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -142,13 +171,13 @@ ALTER TABLE `activereviews`
 -- AUTO_INCREMENT for table `gamescomments`
 --
 ALTER TABLE `gamescomments`
-  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
