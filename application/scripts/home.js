@@ -7,7 +7,7 @@ $('.carousel').carousel(1); //start carousel on 1st slide
 let urlObj = new URL(window.location.href);
 let slug = urlObj.searchParams.get("slug");
 
-if(slug != false)
+if(slug !== null && slug !== "") //this is how the slug can appear for the "All" (default) option
 {
 	let option_index = $('#'+slug).index();
 	$('#slug_select').prop("selectedIndex", option_index)
