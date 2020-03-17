@@ -43,11 +43,18 @@ var app = new Vue({
 
 			let user_name= $('#user_name').val(); //get username
 
-			$.post($('#base_url_input').val()+'/review/comments/'+reviewID+'/postComment', {comment: comment}, function(){ //build url to post, in essense base_url.review_controller.review_id.method
-			});
 
-			this.Comments.push({UserComment: comment, UserName: user_name}); //push our comment to the vue comment block
+			if(user_name == undefined)
+			{
+				alert("You must be logged in to post a comment.");
+			}
+			else
+			{
+				$.post($('#base_url_input').val()+'/review/comments/'+reviewID+'/postComment', {comment: comment}, function(){ //build url to post, in essense base_url.review_controller.review_id.method
+				});
 
+				this.Comments.push({UserComment: comment, UserName: user_name}); //push our comment to the vue comment block
+			}
 		}
 	}
 });
