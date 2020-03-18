@@ -8,4 +8,3 @@ Please change the values found in config.json to values which you use. This shou
 <br>Index page should be index.php, unless a different index is defined or the webserver automatically routes requests here
 <br>The Node_host configuration value contains the url with which the FRONT END will connect to, feel free to change the port.
 <br>Ensure that the mysql user/pass is correct, along with the database, which defaults to gamereview, & port.
-<br><b>FINALLY, GO TO *webserver*/import_sql.php to create the database</b>
