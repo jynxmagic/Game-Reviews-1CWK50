@@ -65,6 +65,7 @@ $route['register/do-register'] = 'User/do_register';
 $route['account/(:any)'] = 'User/view/$1';
 $route['account/json/(:any)'] = 'User/getUserJsonByUsername/$1';
 $route['account/update/isadmin/(:any)/(:any)'] = 'User/updateIsAdmin/$1/$2';
+$route['account/update/darkmode/(:any)/(:any)'] = 'User/updateDarkMode/$1/$2';
 $route['logout'] = 'User/logout';
 
 

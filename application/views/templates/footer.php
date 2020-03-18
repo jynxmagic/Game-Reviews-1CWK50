@@ -1,34 +1,34 @@
-<div id="chat" class="position-fixed fixed-bottom col-3 bg-light text-dark rounded border overflow-auto ml-2">
-<?php if(isset($is_logged_in) && isset($username)){ ?>
-	<div v-if="code == 200">
-		<!-- chat server is online! -->
-		<div class="row border-bottom pb-1 mb-1">
-			<p class="col-6 text-center">Chat Online</p>
-			<select id="selected_room" v-on:change="changeRoom()" class="col-6">
-				<option value="global_chat" selected>Global Chat</option>
-				<option value="semi_global_chat">Less global chat</option>
-			</select>
+	<div id="chat" class="position-fixed fixed-bottom col-3 bg-light text-dark rounded border overflow-auto ml-2">
+	<?php if(isset($is_logged_in) && isset($username)){ ?>
+		<div v-if="code == 200">
+			<!-- chat server is online! -->
+			<div class="row border-bottom pb-1 mb-1">
+				<p class="col-6 text-center">Chat Online</p>
+				<select id="selected_room" v-on:change="changeRoom()" class="col-6">
+					<option value="global_chat" selected>Global Chat</option>
+					<option value="semi_global_chat">Less global chat</option>
+				</select>
+			</div>
+
+			<div id="chatbox" class="container overflow-auto">
+
+			</div>
+
+
+			<div class="justify-content-center">
+					<input id="message" type="text" class="col-12 mb-3"/>
+					<button v-on:click="sendMessage()" class="btn row btn-hover btn-success" id="chatsubmit">Send Message</button>
+			</div>
+
 		</div>
-
-		<div id="chatbox" class="container overflow-auto">
-
+		<div v-else>
+			Chat offline: {{reason}}
 		</div>
-
-
-		<div class="justify-content-center">
-				<input id="message" type="text" class="col-12 mb-3"/>
-				<button v-on:click="sendMessage()" class="btn row btn-hover btn-success" id="chatsubmit">Send Message</button>
-		</div>
-
+	<?php } else{
+		echo "<a href='".site_url("/register")."'><p class='display-1' id='chat-login-text'>Please login/register to use chat!</p></a> ";
+	}?>
 	</div>
-	<div v-else>
-		Chat offline: {{reason}}
-	</div>
-<?php } else{
-	echo "<a href='".site_url("/register")."'><p class='display-1' id='chat-login-text'>Please login/register to use chat!</p></a> ";
-}?>
-</div>
-
+</main>
 <footer class="footer mt-5 pt-2 rounded-top py-3">
 	<div class="container-fluid">
 		<div class="row pb-3">
@@ -73,6 +73,7 @@
 <script src="<?php echo base_url('application/scripts/bootstrap.min.js') ?>" defer></script>
 <script src="<?php echo base_url('application/scripts/vue/vue.js') ?>" defer></script>
 <script src="<?php echo base_url('application/scripts/popper.min.js') ?>" defer></script>
+<script src="<?php echo base_url('application/scripts/vue/darkmode_vue.js') ?>" defer></script>
 
 <?php if(isset($is_logged_in) && isset($username)): ?>
 	<script src="<?php echo base_url('application/scripts/node/client/socket.io.js') ?>" defer></script>

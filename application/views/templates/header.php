@@ -23,7 +23,7 @@
 	?>
 
 </head>
-<body class="bg-dark text-white">
+<body id="main">
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
 
@@ -51,3 +51,5 @@
 			</ul>
 		</nav>
 	</header>
+
+<main role="main"> <!-- main is html5 -->

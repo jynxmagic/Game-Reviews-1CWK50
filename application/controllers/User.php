@@ -121,6 +121,19 @@ class User extends CI_Controller
 		$this->UserModel->updateIsAdmin($username, $is_admin);
 	}
 
+
+	/**
+	 * updates the DarkMode property of specific user to supplied value
+	 *
+	 * @param $username username of user to update
+	 * @param $darkmode value to update is_admin to
+	 */
+	public function updateDarkMode($username, $darkmode)
+	{
+		$this->UserModel->updateDarkMode($username, $darkmode);
+	}
+
+
 	/**
 	 * Perform the register action
 	 */

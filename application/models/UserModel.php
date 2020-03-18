@@ -78,6 +78,31 @@ class UserModel extends CI_Model
 			$this->db->update('users');
 		}
 	}
+
+
+	/**
+	 * Updates whether a user has DarkMode styles or not
+	 *
+	 * @param $username string username of user to update
+	 * @param $darkmode boolean
+	 */
+	public function updateDarkMode($username, $darkmode)
+	{
+		if($darkmode == "true")
+		{
+			$darkmode = 1;
+		}
+		else
+		{
+			$darkmode = 0;
+		}
+		if(isset($username))
+		{
+			$this->db->set('DarkMode', $darkmode);
+			$this->db->where('UserName', $username);
+			$this->db->update('users');
+		}
+	}
 }
 
 

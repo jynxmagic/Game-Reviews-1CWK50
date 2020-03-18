@@ -6,6 +6,7 @@ var app = new Vue({
 		account_base_route: "",
 		account_json_controller_route: "",
 		account_update_isadmin_controller_route: "",
+		account_update_darkmode_controller_route: "",
 		data : {
 				//data variable is an obj (json)
 		}
@@ -17,7 +18,7 @@ var app = new Vue({
 
 		this.account_json_controller_route = this.account_base_route+'/json/'+this.username;// generate account json route
 		this.account_update_isadmin_controller_route = this.account_base_route+'/update/isadmin/'; //generate isadmin route
-
+		this.account_update_darkmode_controller_route = this.account_base_route+'/update/darkmode/'; //generate isadmin route
 		this.loadPageData();
 	},
 	methods: {
@@ -44,6 +45,29 @@ var app = new Vue({
 				if(status == "success")
 				{
 					self.data.isAdmin = is_admin;
+				}
+			});
+		},
+
+		/**
+		 * updates dark mode to true/false
+		 */
+		updateDarkMode : function(){
+			let self = this;
+			let dark_mode = $('#customSwitch2').is(':checked');
+			$.get(this.account_update_darkmode_controller_route+self.username+'/'+dark_mode, function(data, status)
+			{
+				if(status == "success")
+				{
+					self.data.darkmode = dark_mode;
+					if(dark_mode == 1)
+					{
+						$('#main').addClass('bg-dark text-white');
+					}
+					else
+					{
+						$('#main').removeClass('bg-dark text-white')
+					}
 				}
 			});
 		}
