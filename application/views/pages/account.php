@@ -1,6 +1,6 @@
 <section id="app" class="container">
 	<?php
-	if(isset($username) && $username != $user->UserName)
+	if(isset($username) && $username != $user->UserName || !isset($username))
 	{
 		$disabled = "disabled";
 	}
