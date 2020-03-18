@@ -42,7 +42,7 @@
 				</address>
 			</div>
 			<div class="col-4">
-				<p class="text-bold text-white"><b>Email:</b> <a href="mailto://17105584@stu.mmu.ac.uk">17105584@stu.mmu.ac.uk</a></p>
+				<p class="text-bold text-white"><b>Email:</b> <a href="mailto:17105584@stu.mmu.ac.uk">17105584@stu.mmu.ac.uk</a></p>
 			</div>
 			<div class="col-4">
 				<div class="text-white">Some badges to show the site is certified: </div>
