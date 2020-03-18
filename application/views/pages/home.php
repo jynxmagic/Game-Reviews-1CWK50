@@ -23,7 +23,7 @@
 			$account_url = site_url('account/'.$row->UserName);
 			echo <<<EOT
 		<div class="$class img-fluid">
-			<img src="$img_url" alt="$row->GameName" height="500px" width="100%">
+			<img src="$img_url" alt="$row->GameName" height="500px" width="100%" style="object-fit: cover">
 			<div class="carousel-caption d-none d-md-block bg-dark border-top border-left border-right pb-5 rounded-top" style="bottom: 0;">
 				<h5>$row->GameName</h5>
 				<p>$row->GameReview</p>
